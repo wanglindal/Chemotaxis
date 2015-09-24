@@ -32,15 +32,15 @@
 
  	//move and show the bacteria   
  }  
- class Predator
+ /*class Predator
  {
  	int wX, xY;
  	Predator()
  	{
- 		wX =
+ 		//wX =
 
  	}
- }
+ }*/
  class Bacteria    
  {  
  	int myX,myY,myColor;//colorR,colorG, colorB;
