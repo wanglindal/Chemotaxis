@@ -3,7 +3,7 @@
  int more=100;//declare bacteria variables here   
  void setup()   
  {     
- 	size(600,600);
+ 	size(800,600);
  	
 
  	//initialize bacteria variables here   
@@ -31,7 +31,7 @@
  	}
  	water.show();
 
- 	//move and show the bacteria   
+ 	// 
  }  
  class Predator
  {
@@ -42,7 +42,7 @@
  	}
  	void show()
  	{
- 		frameRate(50);
+ 		
  		fill(94,169,228,170);
  		ellipse(mouseX,mouseY,50,50);
  		fill(64,166,245,200);
@@ -57,7 +57,7 @@
  Bacteria()
  {
 
- 	myX=(int)(Math.random()*600+1);
+ 	myX=(int)(Math.random()*800+1);
  	myY=(int)(Math.random()*600+1);
  	
  	int colorR=(int)(Math.random()*255+1);
@@ -68,9 +68,46 @@
  }   
  	void move()
  	{
+ 		frameRate(25);
  		myX=myX+ (int)(Math.random()*14-7);
  		myY=myY+(int)(Math.random()*14-7);
+ 		//get away from water
+ 		if (mouseX+15 <myX && mouseY+15<myY )//rightanddown
+ 		{
+ 			myX=myX+ (int)(Math.random()*5+1);
+ 		    myY=myY+(int)(Math.random()*5+1);
+ 		}
+ 		else if (mouseX+15 >myX && mouseY+15>myY )
+ 		{
+ 			myX=myX- (int)(Math.random()*5+1);
+ 		    myY=myY-(int)(Math.random()*5+1);
+ 		}
+ 		else if (mouseX+15 <myX && mouseY+15>myY )
+ 		{
+ 			myX=myX+ (int)(Math.random()*5+1);
+ 		    myY=myY-(int)(Math.random()*5+1);
+ 		}
+ 		else if (mouseX+15 >myX && mouseY+15<myY )
+ 		{
+ 			myX=myX- (int)(Math.random()*5+1);
+ 		    myY=myY+(int)(Math.random()*5+1);
+ 		}
+ 		//refresh pg
+ 		if(keyPressed==true)
+ 		{
+ 			myX=(int)(Math.random()*800+1);
+ 			myY=(int)(Math.random()*600+1);
+ 		}
+ 		//disappear
+ 		if(get(myX,myY) == color(94,169,228,170) )
+ 		{
+ 			myX= -200;
+ 		    myY= -200;
+ 		}
+
  	}
+
+
  	void show()
  	{
 
@@ -78,41 +115,41 @@
  		fill(myColor*2);//colorR,colorG,colorB);
  		ellipse(myX,myY,15,15);
  		//fire
-noStroke();
-fill(245, 147, 61,30);
+	noStroke();
+	fill(245, 147, 61,160);
 
-beginShape();
+	beginShape();
 
-curveVertex(215+myX-150,304+myY-230);
-curveVertex(215+myX-150,304+myY-230);
-curveVertex(224+myX-150,273+myY-230);
-curveVertex(208+myX-150,281+myY-230);
-curveVertex(200+myX-150,264+myY-230);
-curveVertex(191+myX-150,280+myY-230);
-curveVertex(175+myX-150,276+myY-230);
-curveVertex(185+myX-150,304+myY-230);
-curveVertex(183+myX-150,304+myY-230);
-endShape();
-ellipse(200+myX-150, 300+myY-230, 38, 30);
-//inside shape
-fill(240,43,21,45);
-beginShape();
-curveVertex(212+myX-150,297+myY-230);
-curveVertex(209+myX-150,304+myY-230);
-curveVertex(219+myX-150,279+myY-230);
-curveVertex(207+myX-150,286+myY-230);
-curveVertex(199+myX-150,272+myY-230);
-curveVertex(192+myX-150,287+myY-230);
-curveVertex(180+myX-150,281+myY-230);
-curveVertex(191+myX-150,305+myY-230);
-curveVertex(186+myX-150,304+myY-230);
-endShape();
-ellipse(200+myX-150, 300+myY-230, 28, 23);
-fill(255);
-ellipse(195+myX-150,296+myY-230,7,7);
-ellipse(206+myX-150,296+myY-230,7,7);
-fill(0);
-ellipse(195+myX-150,296+myY-230,2,2);
-ellipse(206+myX-150,296+myY-230,2,2);
- 	}//lots of java!   
- }    
+	curveVertex(215+myX-150,304+myY-230);
+	curveVertex(215+myX-150,304+myY-230);
+	curveVertex(224+myX-150,273+myY-230);
+	curveVertex(208+myX-150,281+myY-230);
+	curveVertex(200+myX-150,264+myY-230);
+	curveVertex(191+myX-150,280+myY-230);
+	curveVertex(175+myX-150,276+myY-230);
+	curveVertex(185+myX-150,304+myY-230);
+	curveVertex(183+myX-150,304+myY-230);
+	endShape();
+	ellipse(200+myX-150, 300+myY-230, 38, 30);
+	//inside shape
+	fill(240,43,21,170);
+	beginShape();
+	curveVertex(212+myX-150,297+myY-230);
+	curveVertex(209+myX-150,304+myY-230);
+	curveVertex(219+myX-150,279+myY-230);
+	curveVertex(207+myX-150,286+myY-230);
+	curveVertex(199+myX-150,272+myY-230);
+	curveVertex(192+myX-150,287+myY-230);
+	curveVertex(180+myX-150,281+myY-230);
+	curveVertex(191+myX-150,305+myY-230);
+	curveVertex(186+myX-150,304+myY-230);
+	endShape();
+	ellipse(200+myX-150, 300+myY-230, 28, 23);
+	fill(255);
+	ellipse(195+myX-150,296+myY-230,7,7);
+	ellipse(206+myX-150,296+myY-230,7,7);
+	fill(0);
+	ellipse(195+myX-150,296+myY-230,2,2);
+	ellipse(206+myX-150,296+myY-230,2,2);
+	 }//lots of java!   
+}    
