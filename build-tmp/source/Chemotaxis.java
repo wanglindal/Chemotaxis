@@ -16,7 +16,8 @@ public class Chemotaxis extends PApplet {
 
  Bacteria[] colony;
  Predator water; 
- int more=100;//declare bacteria variables here   
+ int more=100;
+//declare bacteria variables here   
  public void setup()   
  {     
  	size(800,600);
@@ -39,6 +40,7 @@ public class Chemotaxis extends PApplet {
  	 int x,y ;
  	x=200;
  	y=200;
+
  	
  	for(int i=0; i<colony.length; i++)
  	{
@@ -51,10 +53,10 @@ public class Chemotaxis extends PApplet {
  }  
  class Predator
  {
- 
+ 	
  	Predator()
  	{
- 	
+ 	  
  	}
  	public void show()
  	{
@@ -87,23 +89,44 @@ public class Chemotaxis extends PApplet {
  		frameRate(25);
  		myX=myX+ (int)(Math.random()*14-7);
  		myY=myY+(int)(Math.random()*14-7);
+ 			//borders
+ 		if (myX>800)
+ 		{
+ 			myX=myX+(int)(Math.random()*3-10);
+
+ 		}
+ 		if(myX<0)
+ 		{
+ 			myX=myX+(int)(Math.random()*5+5);
+
+ 		}
+ 		if(myY>600)
+ 		{
+ 			myY=myY+(int)(Math.random()*5-10);
+
+ 		}
+ 		if(myY<0)
+ 		{
+ 			myY=myY+(int)(Math.random()*5+5);
+
+ 		}
  		//get away from water
- 		if (mouseX+15 <myX && mouseY+15<myY )//rightanddown
+ 		if (mouseX+5 <=myX && mouseY+5<=myY )//rightanddown
  		{
  			myX=myX+ (int)(Math.random()*5+1);
  		    myY=myY+(int)(Math.random()*5+1);
  		}
- 		else if (mouseX+15 >myX && mouseY+15>myY )
+ 		else if (mouseX+5 >=myX && mouseY+5>=myY )
  		{
  			myX=myX- (int)(Math.random()*5+1);
  		    myY=myY-(int)(Math.random()*5+1);
  		}
- 		else if (mouseX+15 <myX && mouseY+15>myY )
+ 		else if (mouseX+5 <=myX && mouseY+5>=myY )
  		{
  			myX=myX+ (int)(Math.random()*5+1);
  		    myY=myY-(int)(Math.random()*5+1);
  		}
- 		else if (mouseX+15 >myX && mouseY+15<myY )
+ 		else if (mouseX+5 >=myX && mouseY+5<=myY )
  		{
  			myX=myX- (int)(Math.random()*5+1);
  		    myY=myY+(int)(Math.random()*5+1);
@@ -114,12 +137,8 @@ public class Chemotaxis extends PApplet {
  			myX=(int)(Math.random()*800+1);
  			myY=(int)(Math.random()*600+1);
  		}
- 		//disappear
- 		if(get(myX,myY) == color(94,169,228,170) )
- 		{
- 			myX= -200;
- 		    myY= -200;
- 		}
+ 		
+ 	
 
  	}
 
